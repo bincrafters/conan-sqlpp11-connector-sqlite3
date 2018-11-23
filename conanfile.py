@@ -17,10 +17,16 @@ class sqlpp11Conan(ConanFile):
     exports = ["LICENSE.md"]
     exports_sources = ["CMakeLists.txt"]
     generators = "cmake"
+    options = {"shared": [True, False], "fPIC": [True, False]}
+    default_options = {"shared": False, "fPIC": True}
     _source_subfolder = "source_subfolder"
     _build_subfolder = "build_subfolder"
     requires = "sqlpp11/0.57@bincrafters/stable", "sqlite3/3.25.3@bincrafters/stable"
     short_paths = True
+
+    def config_options(self):
+        if self.settings.os == "Windows":
+            del self.options.fPIC
 
     def source(self):
         tools.get("{0}/archive/{1}.tar.gz".format(self.homepage, self.version),
