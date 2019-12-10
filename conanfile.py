@@ -17,7 +17,7 @@ class sqlpp11Conan(ConanFile):
     default_options = {"shared": False, "fPIC": True}
     _source_subfolder = "source_subfolder"
     _build_subfolder = "build_subfolder"
-    requires = "sqlpp11/0.57@bincrafters/stable", "sqlite3/3.25.3@bincrafters/stable"
+    requires = "sqlpp11/0.58", "sqlite3/3.25.3@bincrafters/stable"
     short_paths = True
 
     def config_options(self):
